@@ -16,25 +16,27 @@
 
 ###Usage: search_wooyun.py [options] 
 
-  Options:
+    Options:
 
-  -h, --help            show this help message and exit
+        -h, --help            show this help message and exit
   
-  -t THREADS_NUM, --threads=THREADS_NUM
-                        Number of threads. default = 10
+        -t THREADS_NUM, --threads=THREADS_NUM
+        Number of threads. default = 10
                         
-  -r REGEX, --regex=REGEX
-                        the regex to find default = leshi|toutiao|zhongke in chinese
+        -r REGEX, --regex=REGEX
+        the regex to find default = leshi|toutiao|zhongke in chinese
                         
-  -u URL, --url=URL     dest url used to spider. default = http://www.wooyun.org/bugs/page/
+        -u URL, --url=URL     
+        dest url used to spider. default = http://www.wooyun.org/bugs/page/
   
-  -s SPARA, --para_start=SPARA
-                        start num of url. default = 100
+        -s SPARA, --para_start=SPARA
+        start num of url. default = 100
                         
-  -e EPARA, --para_end=EPARA
-                        end num of url. default = 200
+        -e EPARA, --para_end=EPARA
+        end num of url. default = 200
                         
-  -r REGEX, --regex=REGEX  the regex to find default = 乐视|头条|中科院
+        -r REGEX, --regex=REGEX  
+        the regex to find default = 乐视|头条|中科院
   
   
 
