@@ -46,7 +46,6 @@ class checkweb(threading.Thread):
    		try:
            		f = urllib2.urlopen(sub_getque, timeout=2)
            		self.line = re.compile(self.reg).findall(f.read())
-           		#return line
 
         	except Exception, e:
            		pass
