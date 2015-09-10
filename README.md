@@ -1,7 +1,18 @@
 # search_wooyun
 
 
-由于近期乌云不让我的好朋友小白搜索漏洞了，我拿出个小脚本给他
+由于近期乌云不让我的好朋友小白搜索漏洞了，拿出个小脚本给他
+
+    [root@centos63 ~]# python search_wooyun.py -t 30 -s 100 -e 300 -r "yershop"
+
+    start!
+
+
+        Threads: 30,URL: http://www.wooyun.org/bugs/page/, startNUM: 100, endNUM: 300, regular: yershop
+
+        KEY: yershop, ID: 2015-0134558, URL: http://wooyun.org/bugs/wooyun-2015-0134558, TITLE: yershop逻辑错误（可0元购物）
+        KEY: yershop, ID: 2015-0133005, URL: http://wooyun.org/bugs/wooyun-2015-0133005, TITLE: yershop商城系统最新版一处xff注入(demo演示)
+        KEY: yershop, ID: 2015-0132734, URL: http://wooyun.org/bugs/wooyun-2015-0132734, TITLE: yershop商城系统30处sql注入
 
 
 ###支撑中文正则
@@ -44,16 +55,6 @@
 
 
 ###最少指定一个参数
-    [root@centos63 ~]# python search_wooyun.py -t 30 -s 100 -e 300 -r "yershop"
-
-    start!
-
-
-        Threads: 30,URL: http://www.wooyun.org/bugs/page/, startNUM: 100, endNUM: 300, regular: yershop
-
-        KEY: yershop, ID: 2015-0134558, URL: http://wooyun.org/bugs/wooyun-2015-0134558, TITLE: yershop逻辑错误（可0元购物）
-        KEY: yershop, ID: 2015-0133005, URL: http://wooyun.org/bugs/wooyun-2015-0133005, TITLE: yershop商城系统最新版一处xff注入(demo演示)
-        KEY: yershop, ID: 2015-0132734, URL: http://wooyun.org/bugs/wooyun-2015-0132734, TITLE: yershop商城系统30处sql注入
 
     [root@centos63 ~]# python search_wooyun.py -t 1
 
