@@ -103,7 +103,8 @@ def uurl(url, snum, enum):
 
 def main(url, threads, snum, enum):
 
-	global queue
+	global queue, regex
+	print "\n\tThreads: %d,URL: %s, startNUM: %d, endNUM: %d, regular: %s\n"%(threads, url, snum, enum, regex)
 	worker_threads = worker_pool(queue, threads)
 	start_time = time.time()
 
