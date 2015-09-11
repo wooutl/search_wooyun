@@ -1,6 +1,6 @@
 #coding=utf-8
 import re,sys,urllib,urllib2
-import threading, time
+import threading, time, sys, os
 from Queue import Queue
 import optparse
 
@@ -46,6 +46,7 @@ class checkweb(threading.Thread):
    		try:
            		f = urllib2.urlopen(sub_getque, timeout=2)
            		self.line = re.compile(self.reg).findall(f.read())
+           		
 
         	except Exception, e:
            		pass
@@ -70,15 +71,40 @@ class checkweb(threading.Thread):
     				cchar = content.split(' ')
     				url = 'http://wooyun.org/bugs/wooyun-'+cchar[0]
 
-    			print "KEY: %s, ID: %s, URL: %s, TITLE: %s"%(keyword,cchar[0],url,cchar[1])
+    			print "\nKEY: %s, ID: %s, URL: %s, TITLE: %s"%(keyword,cchar[0],url,cchar[1])
 			self.found_count += 1
 			con.release()
 	
-	
+
+
+class distool(threading.Thread):
+
+	def __init__(self):
+
+		threading.Thread.__init__(self)
+
+	def	run(self):
+
+		global queue
+
+		while True:
+
+			if queue.qsize() < 2:
+				break
+
+			for pp in range(9):
+				strs = '>'
+				strs=strs*pp
+				sys.stdout.write(strs)
+				sys.stdout.flush()
+				time.sleep(1)
 
 def worker_pool(queue, size):
 
 	workers = []
+	dtool = distool()
+	dtool.start()
+	workers.append(dtool)
 
 	for i in range(size):
 
@@ -104,10 +130,11 @@ def main(url, threads, snum, enum):
 
 	global queue, regex
 	print "\n\tThreads: %d,URL: %s, startNUM: %d, endNUM: %d, regular: %s\n"%(threads, url, snum, enum, regex)
+	uurl(url, snum, enum)
 	worker_threads = worker_pool(queue, threads)
 	start_time = time.time()
 
-	uurl(url, snum, enum)
+	
 
 	for worker in worker_threads:
 
@@ -117,7 +144,9 @@ def main(url, threads, snum, enum):
 
 		worker.join()
 
-	print format(time.time() - start_time)
+	print "\ncomplete! "+format(time.time() - start_time)
+
+	return "end"
 
 
 if __name__ == '__main__':
@@ -159,4 +188,5 @@ if __name__ == '__main__':
 	con = threading.Condition()
 	queue = Queue()
 	regex = options.regex
+	threads = options.threads_num
 	start = main(url=options.url, threads=options.threads_num, snum=options.spara,enum=options.epara)
