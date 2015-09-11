@@ -92,12 +92,16 @@ class distool(threading.Thread):
 			if queue.qsize() < 2:
 				break
 
+
 			for pp in range(9):
-				strs = '>'
-				strs=strs*pp
+				strs = '==> '
+				strs = strs*pp
+				uio = '\b'*4
+				uio = uio*pp
 				sys.stdout.write(strs)
 				sys.stdout.flush()
 				time.sleep(1)
+				sys.stdout.write(uio)
 
 def worker_pool(queue, size):
 
